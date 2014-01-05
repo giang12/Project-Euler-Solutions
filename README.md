@@ -1,5 +1,5 @@
 Project-Euler-Solutions
 =======================
 
-Project Euler Solutions In Javascript
+My Solutions In Javascript For Project Euler Problems
 http://projecteuler.net/
