@@ -51,28 +51,64 @@ var numGrid = [
 
 
 function getMaxVertivally(grid){
-    var max = -1;
-
+  var max = -1;
+  var temp;
+  
+  for(var col = 0; col < grid[0].length; col++){
+   
+    for(var row = 0; row < grid.length - 4; row++){
+     
+      temp = grid[row][col] * grid[row + 1][col] * grid[row + 2][col] * grid[row + 3][col];
+      max = max < temp ? temp : max;
+    }
     
+  }
+  
+  return max;
 }
 
 function getMaxHorizontally(grid){
-    var max = -1;
+  var max = -1;
+  var temp;
+  
+  for(var row = 0; row < grid.length; row++){
+   
+    for(var col = 0; col < grid[row].length - 4; col++){
+     
+      temp = grid[row][col] * grid[row][col + 1] * grid[row][col + 2] * grid[row][col + 3];
+      max = max < temp ? temp : max;
+    }
     
-    
+  }
+  
+  return max;
 }
 
 
 function getMaxDiagonallyLeft(grid){
-    var max = -1;
+  var max = -1;
+  var temp;
+  
+  for(var row = 0; row < grid.length - 4 ; row++){
+   
+    for(var col = 0; col < grid[row].length - 4; col++){
+     
+      temp = grid[row][col] * grid[row + 1][col + 1] * grid[row + 2][col + 2] * grid[row + 3][col + 3];
+      max = max < temp ? temp : max;
+    }
     
+  }
+  return max;
 }
 
 function getMaxDiagonallyRight(grid){
-    var max = -1;
-
+  
+  for(var row = 0; row < grid.length; row++){
+    grid[row] = grid[row].reverse();
+  }
+  
+  return getMaxDiagonallyLeft(grid);
 }
-
 
 console.log(getMaxVertivally(numGrid));
 console.log(getMaxHorizontally(numGrid));
